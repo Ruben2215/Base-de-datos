@@ -104,6 +104,11 @@ namespace Farmacia__vida
                 MessageBox.Show("Ingresa un nombre válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox.Clear();
             }
+            else
+            {
+                checkBoxNombre.Checked = true;
+                checkBoxNombre.Visible = true;
+            }
         }
 
         private void validarApellido(object sender, EventArgs e)
@@ -119,6 +124,11 @@ namespace Farmacia__vida
             {
                 MessageBox.Show("Ingresa un apellido válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox.Clear();
+            }
+            else
+            {
+                checkBoxApellido_P.Checked = true;
+                checkBoxApellido_P.Visible=true;
             }
         }
 
@@ -146,7 +156,8 @@ namespace Farmacia__vida
             if (textbox.Text.Length == 10 && EsEnteroValido10Digitos(textbox.Text))
             {
                 textbox.BackColor = Color.Green;
-
+                checkBoxTelefono.Checked = true;
+                checkBoxTelefono.Visible = true;
             }
             else if (!EsEntero (textbox.Text)) {
                 textbox.BackColor = Color.Red;
@@ -198,20 +209,27 @@ namespace Farmacia__vida
             if (txtNombre.Text == "" )//|| txtAp_Paterno.Text == "" || txtTelefono.Text == "")
             {
                 txtNombre.BackColor = Color.Red;
-                MessageBox.Show("Por favor, rellena los campos minimos requeridos de \nNombre \nApellido paterno \nTeléfono","Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Por favor, rellena el campo minimo requerido de \nNombre","Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else if (txtAp_Paterno.Text == "")
             {
                 txtAp_Paterno.BackColor = Color.Red;
-                MessageBox.Show("Por favor, rellena los campos minimos requeridos de \nNombre \nApellido paterno \nTeléfono", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Por favor, rellena los campos minimos requeridos de \nApellido paterno", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             }
             else if (txtTelefono.Text == "")
             {
                 txtTelefono.BackColor = Color.Red;
+                MessageBox.Show("Por favor, rellena los campos minimos requeridos de \nTeléfono", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
             }
             else
             {
+                txtTelefono.BackColor = Color.White; //Para limpiar el color de relleno
+                txtAp_Paterno.BackColor = Color.White;
+                txtNombre.BackColor = Color.White;
+
+
                 string nombre = txtNombre.Text;
                 string ap_paterno = txtAp_Paterno.Text;
                 string ap_materno = txtAp_Materno.Text;
@@ -294,7 +312,12 @@ namespace Farmacia__vida
             rbtnG_Femenino.Checked = false;
             rbtnG_Masculino.Checked = false;
             dtpFecha_Nacimiento.Value = DateTime.Now;
-        
+            checkBoxApellido_P.Checked = false;
+            checkBoxNombre.Checked = false;
+            checkBoxTelefono.Checked = false;
+
+
+
         }
 
 
