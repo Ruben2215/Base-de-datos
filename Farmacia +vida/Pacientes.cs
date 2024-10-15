@@ -10,7 +10,8 @@ namespace Farmacia__vida
     public partial class Pacientes : Form
 
     {
-        string SqlConection = "Server=localhost; Port=3306; Database=Farmacia_Unach; Uid = root; Pwd=;";
+        //        string SqlConection = "Server=unach.cpic0k0qeyvb.us-east-1.rds.amazonaws.com; Port=3306; Database=Farmacia_Unach; Uid = admin; Pwd=tiajosseline;";
+        string SqlConection = "Server=localhost; Port=3306; Database=Farmacia_Unach; Uid = root;  Pwd=;";
 
         public Pacientes()
         {
@@ -22,6 +23,8 @@ namespace Farmacia__vida
             txtAp_Materno.TextChanged += validarApellido;
             txtTelefono.TextChanged += validarTelefono;
             txtCorreo.TextChanged += validarCorreo;
+            txtTel_Alternativo.TextChanged += validarTelefono;
+            
             
         }
 
@@ -30,23 +33,41 @@ namespace Farmacia__vida
 
         }
 
-        private void InsertarPacientes(string nombre, string ap_paterno, string ap_materno, string telefono, string correo, string direccion, DateTime fecha_nacimiento, string sexo)
+        private void InsertarPacientes(string nombre, string ap_paterno, string ap_materno, string telefono,string telefono_alternativo, string correo, string direccion, DateTime fecha_nacimiento, string sexo, string alergias_paciente)
         {
             using (MySqlConnection connection = new MySqlConnection(SqlConection))
             {
                 connection.Open();
-                string insertQuery = "INSERT INTO Pacientes (nombres, apellido_paterno, apellido_materno, telefono, correo_electronico, direccion, fecha_nacimiento, sexo) " +
-                    "VALUES (@nombres, @apellido_paterno, @apellido_materno, @telefono, @correo_electronico, @direccion, @fecha_nacimiento, @sexo)";
+                string insertQuery = "INSERT INTO Pacientes (nombres, apellido_paterno, apellido_materno, telefono,telefono_emergencia ,correo_electronico, direccion, fecha_nacimiento, sexo, alergias)" +
+                                     " VALUES (@nombres, @apellido_paterno, @apellido_materno, @telefono, @telefono_emergencia ,@correo_electronico, @direccion, @fecha_nacimiento, @sexo, @alergias)";
                 using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
                 {
                     command.Parameters.AddWithValue("@nombres", nombre);
                     command.Parameters.AddWithValue("@apellido_paterno", ap_paterno);
-                    command.Parameters.AddWithValue("@apellido_materno", ap_materno);
-                    command.Parameters.AddWithValue("@telefono", telefono);
-                    command.Parameters.AddWithValue("@correo_electronico", correo);
-                    command.Parameters.AddWithValue("@direccion", direccion);
-                    command.Parameters.AddWithValue("@fecha_nacimiento", fecha_nacimiento); // Aquí se pasa DateTime directamente
-                    command.Parameters.AddWithValue("@sexo", sexo);
+                    command.Parameters.AddWithValue("@telefono",telefono);
+                    command.Parameters.AddWithValue("@telefono_emergencia", telefono_alternativo);
+                    command.Parameters.AddWithValue("@alergias", alergias_paciente);
+
+                    if (string.IsNullOrEmpty(ap_materno))
+                        command.Parameters.AddWithValue("@apellido_materno", DBNull.Value);
+                    else
+                        command.Parameters.AddWithValue("@apellido_materno", ap_materno);
+
+                    if (string.IsNullOrEmpty(correo))
+                        command.Parameters.AddWithValue("@correo_electronico", DBNull.Value);
+                    else
+                        command.Parameters.AddWithValue("@correo_electronico", correo);
+
+                    if (string.IsNullOrEmpty(direccion))
+                        command.Parameters.AddWithValue("@direccion", DBNull.Value);
+                    else
+                        command.Parameters.AddWithValue("@direccion", direccion);
+
+                    if (fecha_nacimiento.Date == DateTime.Today)
+                        command.Parameters.AddWithValue("@fecha_nacimiento", DBNull.Value);
+                    else
+                        command.Parameters.AddWithValue("@fecha_nacimiento", fecha_nacimiento);
+                        command.Parameters.AddWithValue("@sexo", sexo);
                     command.ExecuteNonQuery();
                 }
                 connection.Close();
@@ -84,6 +105,8 @@ namespace Farmacia__vida
             return Regex.IsMatch(valor, @"^[a-z\s@._1-9ñ]+$");
         }
 
+        
+
         private bool EsFechaValida(string valor)
         {
             DateTime fecha;
@@ -108,7 +131,7 @@ namespace Farmacia__vida
             {
                 checkBoxNombre.Checked = true;
                 checkBoxNombre.Visible = true;
-            }
+            } 
         }
 
         private void validarApellido(object sender, EventArgs e)
@@ -193,6 +216,22 @@ namespace Farmacia__vida
             }
         }
 
+        /*private void validarTexto(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                //de momento comprobar si quitar systemcolor.window afecta o no a la validacion
+                return;
+            }
+
+            if (!EsTextoValido(textBox.Text))
+            {
+                MessageBox.Show("Ingresa un texto valido")
+            }
+
+        }*/
+
         private void validarFechaNacimiento(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -236,9 +275,9 @@ namespace Farmacia__vida
                 string telefono = txtTelefono.Text;
                 string correo = txtCorreo.Text;
                 string direccion = txtDireccion.Text;
-                // string fecha_nacimiento = txtFecha_Nacimiento.Text;
                 DateTime fecha_nacimiento = dtpFecha_Nacimiento.Value; //Use un DateTime directamente en vez de un string por los 
-                                                                       //errores en el ingreso de la fecha
+                string telefono_alternativo = txtTel_Alternativo.Text;     //errores en el ingreso de la fecha
+                string alergias_paciente = txtAlergias.Text;
 
 
                 String sexo = "N/E";
@@ -250,12 +289,13 @@ namespace Farmacia__vida
                 {
                     sexo = "F";
                 }
-                InsertarPacientes(nombre, ap_paterno, ap_materno, telefono, correo, direccion, fecha_nacimiento, sexo);
+                InsertarPacientes(nombre, ap_paterno, ap_materno, telefono, telefono_alternativo, correo, direccion, fecha_nacimiento, sexo, alergias_paciente);
 
                 MessageBox.Show("Paciente agregado exitosamente", "Paciente agregado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 limpiarCampos();
             }
         }
+        
 
         private void btnRegresar_Click(object sender, EventArgs e)
         { 
@@ -302,6 +342,7 @@ namespace Farmacia__vida
         }
         //limpiar todos los campos
         private void limpiarCampos() {
+
 
             txtNombre.Clear();
             txtAp_Paterno.Clear();
