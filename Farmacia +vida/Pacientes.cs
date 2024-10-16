@@ -11,7 +11,7 @@ namespace Farmacia__vida
 
     {
         //        string SqlConection = "Server=unach.cpic0k0qeyvb.us-east-1.rds.amazonaws.com; Port=3306; Database=Farmacia_Unach; Uid = admin; Pwd=tiajosseline;";
-        string SqlConection = "Server=localhost; Port=3306; Database=Farmacia_Unach; Uid = root;  Pwd=;";
+        string SqlConection = "Server=farmaciaunach1.cpic0k0qeyvb.us-east-1.rds.amazonaws.com; Port=3306; Database=Farmacia_Unach; Uid = admin;  Pwd=tiajosseline;";
 
         public Pacientes()
         {
@@ -23,9 +23,8 @@ namespace Farmacia__vida
             txtAp_Materno.TextChanged += validarApellido;
             txtTelefono.TextChanged += validarTelefono;
             txtCorreo.TextChanged += validarCorreo;
-            txtTel_Alternativo.TextChanged += validarTelefono;
-            
-            
+
+
         }
 
         private void Pacientes_Load(object sender, EventArgs e)
@@ -33,20 +32,19 @@ namespace Farmacia__vida
 
         }
 
-        private void InsertarPacientes(string nombre, string ap_paterno, string ap_materno, string telefono,string telefono_alternativo, string correo, string direccion, DateTime fecha_nacimiento, string sexo, string alergias_paciente)
+        private void InsertarPacientes(string nombre, string ap_paterno, string ap_materno, string telefono, string correo, string direccion, DateTime fecha_nacimiento, string sexo, string alergias_paciente)
         {
             using (MySqlConnection connection = new MySqlConnection(SqlConection))
             {
                 connection.Open();
-                string insertQuery = "INSERT INTO Pacientes (nombres, apellido_paterno, apellido_materno, telefono,telefono_emergencia ,correo_electronico, direccion, fecha_nacimiento, sexo, alergias)" +
-                                     " VALUES (@nombres, @apellido_paterno, @apellido_materno, @telefono, @telefono_emergencia ,@correo_electronico, @direccion, @fecha_nacimiento, @sexo, @alergias)";
+                string insertQuery = "INSERT INTO Pacientes (nombres, apellido_paterno, apellido_materno, telefono,correo_electronico, direccion, fecha_nacimiento, sexo, alergias)" +
+                                     " VALUES (@nombres, @apellido_paterno, @apellido_materno, @telefono,@correo_electronico, @direccion, @fecha_nacimiento, @sexo, @alergias)";
                 using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
                 {
                     command.Parameters.AddWithValue("@nombres", nombre);
                     command.Parameters.AddWithValue("@apellido_paterno", ap_paterno);
-                    command.Parameters.AddWithValue("@telefono",telefono);
-                    command.Parameters.AddWithValue("@telefono_emergencia", telefono_alternativo);
-                    command.Parameters.AddWithValue("@alergias", alergias_paciente);
+                    command.Parameters.AddWithValue("@telefono", telefono);
+                   // command.Parameters.AddWithValue("@alergias", alergias_paciente);
 
                     if (string.IsNullOrEmpty(ap_materno))
                         command.Parameters.AddWithValue("@apellido_materno", DBNull.Value);
@@ -67,7 +65,12 @@ namespace Farmacia__vida
                         command.Parameters.AddWithValue("@fecha_nacimiento", DBNull.Value);
                     else
                         command.Parameters.AddWithValue("@fecha_nacimiento", fecha_nacimiento);
-                        command.Parameters.AddWithValue("@sexo", sexo);
+                    command.Parameters.AddWithValue("@sexo", sexo);
+                    if (string.IsNullOrEmpty(alergias_paciente))
+                        command.Parameters.AddWithValue("@alergias", DBNull.Value);
+                    else
+                        command.Parameters.AddWithValue("@alergias", alergias_paciente);
+                    
                     command.ExecuteNonQuery();
                 }
                 connection.Close();
@@ -102,10 +105,10 @@ namespace Farmacia__vida
 
         private bool EsCorreoValido(string valor)
         {
-            return Regex.IsMatch(valor, @"^[a-z\s@._1-9ñ]+$");
+            return Regex.IsMatch(valor, @"^[a-z\s@._0-9ñ]+$");
         }
 
-        
+
 
         private bool EsFechaValida(string valor)
         {
@@ -131,7 +134,7 @@ namespace Farmacia__vida
             {
                 checkBoxNombre.Checked = true;
                 checkBoxNombre.Visible = true;
-            } 
+            }
         }
 
         private void validarApellido(object sender, EventArgs e)
@@ -151,29 +154,29 @@ namespace Farmacia__vida
             else
             {
                 checkBoxApellido_P.Checked = true;
-                checkBoxApellido_P.Visible=true;
+                checkBoxApellido_P.Visible = true;
             }
         }
 
-       /* private void validarTelefono1(object sender, EventArgs e)
-        {
-            TextBox textbox = (TextBox)sender;
-            // Verificar si el teléfono contiene solo dígitos
-            if (!EsEntero(textbox.Text))
-            {
-                textbox.BackColor = Color.Red;
-                MessageBox.Show("El teléfono debe contener solo números.", "Error teléfono", MessageBoxButtons.OK);
-                textbox.Clear();
-                return;
-            }
-        }*/
+        /* private void validarTelefono1(object sender, EventArgs e)
+         {
+             TextBox textbox = (TextBox)sender;
+             // Verificar si el teléfono contiene solo dígitos
+             if (!EsEntero(textbox.Text))
+             {
+                 textbox.BackColor = Color.Red;
+                 MessageBox.Show("El teléfono debe contener solo números.", "Error teléfono", MessageBoxButtons.OK);
+                 textbox.Clear();
+                 return;
+             }
+         }*/
 
-            private void validarTelefono(object sender, EventArgs e)
+        private void validarTelefono(object sender, EventArgs e)
         {
             TextBox textbox = (TextBox)sender;
             if (string.IsNullOrWhiteSpace(textbox.Text)) //Permite el campo vacio despues de borrar los datos
             {
-                textbox.BackColor = SystemColors.Window; 
+                textbox.BackColor = SystemColors.Window;
                 return;
             }
             if (textbox.Text.Length == 10 && EsEnteroValido10Digitos(textbox.Text))
@@ -182,10 +185,11 @@ namespace Farmacia__vida
                 checkBoxTelefono.Checked = true;
                 checkBoxTelefono.Visible = true;
             }
-            else if (!EsEntero (textbox.Text)) {
+            else if (!EsEntero(textbox.Text))
+            {
                 textbox.BackColor = Color.Red;
                 MessageBox.Show("El teléfono debe contener solo números.", "Error teléfono", MessageBoxButtons.OK);
-                
+
                 return;
             }
             else if (textbox.Text.Length > 10) //Si es mayor a 10 digitos lanzara error y color rojo
@@ -245,10 +249,10 @@ namespace Farmacia__vida
         private void btnAgregar_Paciente_Click(object sender, EventArgs e)
 
         {
-            if (txtNombre.Text == "" )//|| txtAp_Paterno.Text == "" || txtTelefono.Text == "")
+            if (txtNombre.Text == "")//|| txtAp_Paterno.Text == "" || txtTelefono.Text == "")
             {
                 txtNombre.BackColor = Color.Red;
-                MessageBox.Show("Por favor, rellena el campo minimo requerido de \nNombre","Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Por favor, rellena el campo minimo requerido de \nNombre", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else if (txtAp_Paterno.Text == "")
             {
@@ -276,7 +280,6 @@ namespace Farmacia__vida
                 string correo = txtCorreo.Text;
                 string direccion = txtDireccion.Text;
                 DateTime fecha_nacimiento = dtpFecha_Nacimiento.Value; //Use un DateTime directamente en vez de un string por los 
-                string telefono_alternativo = txtTel_Alternativo.Text;     //errores en el ingreso de la fecha
                 string alergias_paciente = txtAlergias.Text;
 
 
@@ -289,18 +292,19 @@ namespace Farmacia__vida
                 {
                     sexo = "F";
                 }
-                InsertarPacientes(nombre, ap_paterno, ap_materno, telefono, telefono_alternativo, correo, direccion, fecha_nacimiento, sexo, alergias_paciente);
+                InsertarPacientes(nombre, ap_paterno, ap_materno, telefono, correo, direccion, fecha_nacimiento, sexo,
+                    alergias_paciente);
 
                 MessageBox.Show("Paciente agregado exitosamente", "Paciente agregado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 limpiarCampos();
             }
         }
-        
+
 
         private void btnRegresar_Click(object sender, EventArgs e)
-        { 
+        {
             //Interfaz interfaz = new Interfaz(); //ventana de inicio
-           // interfaz.Show();
+            // interfaz.Show();
             //cerrar formulario y abrir inicio
             //this.Close();
             this.Hide();
@@ -341,7 +345,8 @@ namespace Farmacia__vida
 
         }
         //limpiar todos los campos
-        private void limpiarCampos() {
+        private void limpiarCampos()
+        {
 
 
             txtNombre.Clear();
@@ -356,6 +361,7 @@ namespace Farmacia__vida
             checkBoxApellido_P.Checked = false;
             checkBoxNombre.Checked = false;
             checkBoxTelefono.Checked = false;
+            txtAlergias.Clear();
 
 
 
