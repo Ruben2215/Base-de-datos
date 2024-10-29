@@ -36,11 +36,11 @@
             this.button4 = new System.Windows.Forms.Button();
             this.lblReloj = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
-            this.btnAgregar_Cliente = new System.Windows.Forms.Button();
-            this.BtnCerrar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAgregar_Cliente = new System.Windows.Forms.Button();
+            this.BtnCerrar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,8 +85,9 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(240, 84);
             this.button4.TabIndex = 8;
-            this.button4.Text = "button4";
+            this.button4.Text = "Inventario";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // lblReloj
             // 
@@ -114,6 +115,34 @@
             this.lblFecha.Text = "Reloj";
             this.lblFecha.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblFecha.Click += new System.EventHandler(this.lblFecha_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(395, 102);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 16);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "label1";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.Controls.Add(this.lblFecha);
+            this.panel1.Controls.Add(this.lblReloj);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(288, 784);
+            this.panel1.TabIndex = 17;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(286, 629);
+            this.panel2.TabIndex = 0;
             // 
             // btnAgregar_Cliente
             // 
@@ -144,34 +173,6 @@
             this.BtnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCerrar.UseVisualStyleBackColor = false;
             this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(395, 102);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 16);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "label1";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel1.Controls.Add(this.lblFecha);
-            this.panel1.Controls.Add(this.lblReloj);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(288, 784);
-            this.panel1.TabIndex = 17;
-            // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(286, 629);
-            this.panel2.TabIndex = 0;
             // 
             // Interfaz
             // 

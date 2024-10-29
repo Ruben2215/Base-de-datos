@@ -367,6 +367,14 @@ namespace Farmacia__vida
 
         }
 
+        private void checkBoxNombre_CheckedChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void txtAlergias_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

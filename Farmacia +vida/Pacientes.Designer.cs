@@ -48,15 +48,13 @@
             this.rbtnG_Masculino = new System.Windows.Forms.RadioButton();
             this.rbtnG_Femenino = new System.Windows.Forms.RadioButton();
             this.dtpFecha_Nacimiento = new System.Windows.Forms.DateTimePicker();
-            this.btnRegresar = new System.Windows.Forms.Button();
-            this.btnAgregar_Paciente = new System.Windows.Forms.Button();
             this.checkBoxNombre = new System.Windows.Forms.CheckBox();
             this.checkBoxTelefono = new System.Windows.Forms.CheckBox();
             this.checkBoxApellido_P = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtTel_Alternativo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtAlergias = new System.Windows.Forms.TextBox();
+            this.btnRegresar = new System.Windows.Forms.Button();
+            this.btnAgregar_Paciente = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,7 +72,7 @@
             // txtCorreo
             // 
             this.txtCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCorreo.Location = new System.Drawing.Point(405, 312);
+            this.txtCorreo.Location = new System.Drawing.Point(403, 251);
             this.txtCorreo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCorreo.Multiline = true;
             this.txtCorreo.Name = "txtCorreo";
@@ -150,7 +148,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(252, 315);
+            this.label3.Location = new System.Drawing.Point(250, 254);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 20);
             this.label3.TabIndex = 7;
@@ -190,7 +188,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(252, 404);
+            this.label6.Location = new System.Drawing.Point(250, 343);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(164, 20);
             this.label6.TabIndex = 11;
@@ -200,7 +198,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(252, 358);
+            this.label7.Location = new System.Drawing.Point(250, 297);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(81, 20);
             this.label7.TabIndex = 12;
@@ -210,7 +208,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(252, 455);
+            this.label8.Location = new System.Drawing.Point(250, 394);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 20);
             this.label8.TabIndex = 13;
@@ -219,7 +217,7 @@
             // txtDireccion
             // 
             this.txtDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDireccion.Location = new System.Drawing.Point(405, 355);
+            this.txtDireccion.Location = new System.Drawing.Point(403, 294);
             this.txtDireccion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
@@ -231,7 +229,7 @@
             // 
             this.rbtnG_Masculino.AutoSize = true;
             this.rbtnG_Masculino.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnG_Masculino.Location = new System.Drawing.Point(405, 455);
+            this.rbtnG_Masculino.Location = new System.Drawing.Point(403, 394);
             this.rbtnG_Masculino.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbtnG_Masculino.Name = "rbtnG_Masculino";
             this.rbtnG_Masculino.Size = new System.Drawing.Size(106, 24);
@@ -244,7 +242,7 @@
             // 
             this.rbtnG_Femenino.AutoSize = true;
             this.rbtnG_Femenino.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnG_Femenino.Location = new System.Drawing.Point(515, 455);
+            this.rbtnG_Femenino.Location = new System.Drawing.Point(513, 394);
             this.rbtnG_Femenino.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbtnG_Femenino.Name = "rbtnG_Femenino";
             this.rbtnG_Femenino.Size = new System.Drawing.Size(103, 24);
@@ -255,18 +253,76 @@
             // 
             // dtpFecha_Nacimiento
             // 
-            this.dtpFecha_Nacimiento.Location = new System.Drawing.Point(443, 403);
+            this.dtpFecha_Nacimiento.Location = new System.Drawing.Point(441, 342);
             this.dtpFecha_Nacimiento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpFecha_Nacimiento.Name = "dtpFecha_Nacimiento";
             this.dtpFecha_Nacimiento.Size = new System.Drawing.Size(200, 22);
             this.dtpFecha_Nacimiento.TabIndex = 22;
+            // 
+            // checkBoxNombre
+            // 
+            this.checkBoxNombre.AutoSize = true;
+            this.checkBoxNombre.Enabled = false;
+            this.checkBoxNombre.Location = new System.Drawing.Point(692, 75);
+            this.checkBoxNombre.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxNombre.Name = "checkBoxNombre";
+            this.checkBoxNombre.Size = new System.Drawing.Size(18, 17);
+            this.checkBoxNombre.TabIndex = 23;
+            this.checkBoxNombre.UseVisualStyleBackColor = true;
+            this.checkBoxNombre.Visible = false;
+            this.checkBoxNombre.CheckedChanged += new System.EventHandler(this.checkBoxNombre_CheckedChanged);
+            // 
+            // checkBoxTelefono
+            // 
+            this.checkBoxTelefono.AutoSize = true;
+            this.checkBoxTelefono.Enabled = false;
+            this.checkBoxTelefono.Location = new System.Drawing.Point(692, 203);
+            this.checkBoxTelefono.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxTelefono.Name = "checkBoxTelefono";
+            this.checkBoxTelefono.Size = new System.Drawing.Size(18, 17);
+            this.checkBoxTelefono.TabIndex = 24;
+            this.checkBoxTelefono.UseVisualStyleBackColor = true;
+            this.checkBoxTelefono.Visible = false;
+            // 
+            // checkBoxApellido_P
+            // 
+            this.checkBoxApellido_P.AutoSize = true;
+            this.checkBoxApellido_P.Enabled = false;
+            this.checkBoxApellido_P.Location = new System.Drawing.Point(692, 116);
+            this.checkBoxApellido_P.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxApellido_P.Name = "checkBoxApellido_P";
+            this.checkBoxApellido_P.Size = new System.Drawing.Size(18, 17);
+            this.checkBoxApellido_P.TabIndex = 25;
+            this.checkBoxApellido_P.UseVisualStyleBackColor = true;
+            this.checkBoxApellido_P.Visible = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(250, 444);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(70, 20);
+            this.label10.TabIndex = 28;
+            this.label10.Text = "Alergias";
+            // 
+            // txtAlergias
+            // 
+            this.txtAlergias.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAlergias.Location = new System.Drawing.Point(403, 422);
+            this.txtAlergias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtAlergias.Multiline = true;
+            this.txtAlergias.Name = "txtAlergias";
+            this.txtAlergias.Size = new System.Drawing.Size(264, 70);
+            this.txtAlergias.TabIndex = 29;
+            this.txtAlergias.TextChanged += new System.EventHandler(this.txtAlergias_TextChanged);
             // 
             // btnRegresar
             // 
             this.btnRegresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegresar.Image = global::Farmacia__vida.Properties.Resources.hogar;
             this.btnRegresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRegresar.Location = new System.Drawing.Point(515, 557);
+            this.btnRegresar.Location = new System.Drawing.Point(513, 507);
             this.btnRegresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(148, 86);
@@ -281,7 +337,7 @@
             this.btnAgregar_Paciente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar_Paciente.Image = global::Farmacia__vida.Properties.Resources.agregar_usuario;
             this.btnAgregar_Paciente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregar_Paciente.Location = new System.Drawing.Point(311, 557);
+            this.btnAgregar_Paciente.Location = new System.Drawing.Point(309, 507);
             this.btnAgregar_Paciente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAgregar_Paciente.Name = "btnAgregar_Paciente";
             this.btnAgregar_Paciente.Size = new System.Drawing.Size(141, 86);
@@ -291,82 +347,6 @@
             this.btnAgregar_Paciente.UseVisualStyleBackColor = true;
             this.btnAgregar_Paciente.Click += new System.EventHandler(this.btnAgregar_Paciente_Click);
             // 
-            // checkBoxNombre
-            // 
-            this.checkBoxNombre.AutoSize = true;
-            this.checkBoxNombre.Enabled = false;
-            this.checkBoxNombre.Location = new System.Drawing.Point(692, 75);
-            this.checkBoxNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.checkBoxNombre.Name = "checkBoxNombre";
-            this.checkBoxNombre.Size = new System.Drawing.Size(18, 17);
-            this.checkBoxNombre.TabIndex = 23;
-            this.checkBoxNombre.UseVisualStyleBackColor = true;
-            this.checkBoxNombre.Visible = false;
-            // 
-            // checkBoxTelefono
-            // 
-            this.checkBoxTelefono.AutoSize = true;
-            this.checkBoxTelefono.Enabled = false;
-            this.checkBoxTelefono.Location = new System.Drawing.Point(692, 203);
-            this.checkBoxTelefono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.checkBoxTelefono.Name = "checkBoxTelefono";
-            this.checkBoxTelefono.Size = new System.Drawing.Size(18, 17);
-            this.checkBoxTelefono.TabIndex = 24;
-            this.checkBoxTelefono.UseVisualStyleBackColor = true;
-            this.checkBoxTelefono.Visible = false;
-            // 
-            // checkBoxApellido_P
-            // 
-            this.checkBoxApellido_P.AutoSize = true;
-            this.checkBoxApellido_P.Enabled = false;
-            this.checkBoxApellido_P.Location = new System.Drawing.Point(692, 116);
-            this.checkBoxApellido_P.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.checkBoxApellido_P.Name = "checkBoxApellido_P";
-            this.checkBoxApellido_P.Size = new System.Drawing.Size(18, 17);
-            this.checkBoxApellido_P.TabIndex = 25;
-            this.checkBoxApellido_P.UseVisualStyleBackColor = true;
-            this.checkBoxApellido_P.Visible = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(252, 253);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(98, 40);
-            this.label9.TabIndex = 26;
-            this.label9.Text = "Teléfono de\r\nEmergencia";
-            // 
-            // txtTel_Alternativo
-            // 
-            this.txtTel_Alternativo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTel_Alternativo.Location = new System.Drawing.Point(405, 258);
-            this.txtTel_Alternativo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTel_Alternativo.Multiline = true;
-            this.txtTel_Alternativo.Name = "txtTel_Alternativo";
-            this.txtTel_Alternativo.Size = new System.Drawing.Size(264, 35);
-            this.txtTel_Alternativo.TabIndex = 27;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(252, 494);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(70, 20);
-            this.label10.TabIndex = 28;
-            this.label10.Text = "Alergias";
-            // 
-            // txtAlergias
-            // 
-            this.txtAlergias.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAlergias.Location = new System.Drawing.Point(405, 483);
-            this.txtAlergias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtAlergias.Multiline = true;
-            this.txtAlergias.Name = "txtAlergias";
-            this.txtAlergias.Size = new System.Drawing.Size(264, 70);
-            this.txtAlergias.TabIndex = 29;
-            // 
             // Pacientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -374,8 +354,6 @@
             this.ClientSize = new System.Drawing.Size(987, 735);
             this.Controls.Add(this.txtAlergias);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.txtTel_Alternativo);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.checkBoxApellido_P);
             this.Controls.Add(this.checkBoxTelefono);
             this.Controls.Add(this.checkBoxNombre);
@@ -437,8 +415,6 @@
         private System.Windows.Forms.CheckBox checkBoxNombre;
         private System.Windows.Forms.CheckBox checkBoxTelefono;
         private System.Windows.Forms.CheckBox checkBoxApellido_P;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtTel_Alternativo;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtAlergias;
     }

@@ -75,5 +75,11 @@ namespace Farmacia__vida
         {
 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Inventario pacientes = new Inventario(); //ventana de clientes
+            pacientes.Show();
+        }
     }
 }
