@@ -41,6 +41,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnAgregar_Cliente = new System.Windows.Forms.Button();
             this.BtnCerrar = new System.Windows.Forms.Button();
+            this.panelInterfaz = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -174,6 +175,13 @@
             this.BtnCerrar.UseVisualStyleBackColor = false;
             this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
             // 
+            // panelInterfaz
+            // 
+            this.panelInterfaz.Location = new System.Drawing.Point(292, 0);
+            this.panelInterfaz.Name = "panelInterfaz";
+            this.panelInterfaz.Size = new System.Drawing.Size(1143, 772);
+            this.panelInterfaz.TabIndex = 18;
+            // 
             // Interfaz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -188,6 +196,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.BtnCerrar);
+            this.Controls.Add(this.panelInterfaz);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Interfaz";
@@ -214,6 +223,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelInterfaz;
     }
 }
 

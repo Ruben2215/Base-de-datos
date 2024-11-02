@@ -10,7 +10,6 @@ namespace Farmacia__vida
     public partial class Pacientes : Form
 
     {
-        //        string SqlConection = "Server=unach.cpic0k0qeyvb.us-east-1.rds.amazonaws.com; Port=3306; Database=Farmacia_Unach; Uid = admin; Pwd=tiajosseline;";
         string SqlConection = "Server=farmaciaunach1.cpic0k0qeyvb.us-east-1.rds.amazonaws.com; Port=3306; Database=Farmacia_Unach; Uid = admin;  Pwd=tiajosseline;";
 
         public Pacientes()
@@ -79,53 +78,16 @@ namespace Farmacia__vida
 
 
 
-        // Métodos de validación
-        private bool EsEntero(string valor)
-        {
-            int resultado;
-            return int.TryParse(valor, out resultado);
-        }
-
-        private bool EsDecimal(string valor)
-        {
-            decimal resultado;
-            return decimal.TryParse(valor, out resultado);
-        }
-
-        private bool EsEnteroValido10Digitos(string valor)
-        {
-            long resultado;
-            return long.TryParse(valor, out resultado) && valor.Length == 10;
-        }
-
-        private bool EsTextoValido(string valor)
-        {
-            return Regex.IsMatch(valor, @"^[a-zA-Z\sñ]+$");
-        }
-
-        private bool EsCorreoValido(string valor)
-        {
-            return Regex.IsMatch(valor, @"^[a-z\s@._0-9ñ]+$");
-        }
-
-
-
-        private bool EsFechaValida(string valor)
-        {
-            DateTime fecha;
-            return DateTime.TryParseExact(valor, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out fecha);
-        }
-
         private void validarNombre(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            if (string.IsNullOrWhiteSpace(textBox.Text)) //Permite el campo vacio despues de borrar los datos
+            if (string.IsNullOrWhiteSpace(textBox.Text))
             {
                 textBox.BackColor = SystemColors.Window;
                 return;
             }
 
-            if (!EsTextoValido(textBox.Text))
+            if (!Metodos_de_validacion.EsTextoValido(textBox.Text))
             {
                 MessageBox.Show("Ingresa un nombre válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox.Clear();
@@ -140,13 +102,13 @@ namespace Farmacia__vida
         private void validarApellido(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            if (string.IsNullOrWhiteSpace(textBox.Text)) //Permite el campo vacio despues de borrar los datos
+            if (string.IsNullOrWhiteSpace(textBox.Text))
             {
                 textBox.BackColor = SystemColors.Window;
                 return;
             }
 
-            if (!EsTextoValido(textBox.Text))
+            if (!Metodos_de_validacion.EsTextoValido(textBox.Text))
             {
                 MessageBox.Show("Ingresa un apellido válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox.Clear();
@@ -158,47 +120,34 @@ namespace Farmacia__vida
             }
         }
 
-        /* private void validarTelefono1(object sender, EventArgs e)
-         {
-             TextBox textbox = (TextBox)sender;
-             // Verificar si el teléfono contiene solo dígitos
-             if (!EsEntero(textbox.Text))
-             {
-                 textbox.BackColor = Color.Red;
-                 MessageBox.Show("El teléfono debe contener solo números.", "Error teléfono", MessageBoxButtons.OK);
-                 textbox.Clear();
-                 return;
-             }
-         }*/
+        
 
         private void validarTelefono(object sender, EventArgs e)
         {
             TextBox textbox = (TextBox)sender;
-            if (string.IsNullOrWhiteSpace(textbox.Text)) //Permite el campo vacio despues de borrar los datos
+            if (string.IsNullOrWhiteSpace(textbox.Text))
             {
                 textbox.BackColor = SystemColors.Window;
                 return;
             }
-            if (textbox.Text.Length == 10 && EsEnteroValido10Digitos(textbox.Text))
+            if (textbox.Text.Length == 10 && Metodos_de_validacion.EsEnteroValido10Digitos(textbox.Text))
             {
                 textbox.BackColor = Color.Green;
                 checkBoxTelefono.Checked = true;
                 checkBoxTelefono.Visible = true;
             }
-            else if (!EsEntero(textbox.Text))
+            else if (!Metodos_de_validacion.EsEntero(textbox.Text))
             {
                 textbox.BackColor = Color.Red;
                 MessageBox.Show("El teléfono debe contener solo números.", "Error teléfono", MessageBoxButtons.OK);
-
                 return;
             }
-            else if (textbox.Text.Length > 10) //Si es mayor a 10 digitos lanzara error y color rojo
+            else if (textbox.Text.Length > 10)
             {
                 textbox.BackColor = Color.Red;
-                MessageBox.Show("Ingrese un telefono de 10 digitos máximo", "Error telefono", MessageBoxButtons.OK);
-
+                MessageBox.Show("Ingrese un teléfono de 10 dígitos máximo", "Error teléfono", MessageBoxButtons.OK);
             }
-            else if (textbox.Text.Length < 10) //Si es menor a 10 digitos lanzara el color rojo
+            else if (textbox.Text.Length < 10)
             {
                 textbox.BackColor = Color.Red;
             }
@@ -207,40 +156,25 @@ namespace Farmacia__vida
         private void validarCorreo(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            if (string.IsNullOrWhiteSpace(textBox.Text)) //Permite el campo vacio despues de borrar los datos
+            if (string.IsNullOrWhiteSpace(textBox.Text))
             {
                 textBox.BackColor = SystemColors.Window;
                 return;
             }
 
-            if (!EsCorreoValido(textBox.Text))
+            if (!Metodos_de_validacion.EsCorreoValido(textBox.Text))
             {
                 MessageBox.Show("Ingresa un correo electrónico válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox.Clear();
             }
         }
 
-        /*private void validarTexto(object sender, EventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            if (string.IsNullOrWhiteSpace(textBox.Text))
-            {
-                //de momento comprobar si quitar systemcolor.window afecta o no a la validacion
-                return;
-            }
-
-            if (!EsTextoValido(textBox.Text))
-            {
-                MessageBox.Show("Ingresa un texto valido")
-            }
-
-        }*/
+        
 
         private void validarFechaNacimiento(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-
-            if (!EsFechaValida(textBox.Text))
+            if (!Metodos_de_validacion.EsFechaValida(textBox.Text))
             {
                 MessageBox.Show("Ingresa una fecha de nacimiento válida (DD/MM/YYYY)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

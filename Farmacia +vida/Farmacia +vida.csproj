@@ -62,6 +62,7 @@
     <Compile Include="Interfaz.Designer.cs">
       <DependentUpon>Interfaz.cs</DependentUpon>
     </Compile>
+    <Compile Include="Metodos de validacion.cs" />
     <Compile Include="Pacientes.cs">
       <SubType>Form</SubType>
     </Compile>
